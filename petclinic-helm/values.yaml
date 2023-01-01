@@ -1,0 +1,4 @@
+container:
+  image: petclinic:latest
+
+replicaCount: 2

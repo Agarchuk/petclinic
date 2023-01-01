@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: petclinic-configmap
+data:
+  # property-like keys; each key maps to a simple value
+  property: "value"
+
+  # file-like keys
+  application.properties: |
+    property2: "value2"
+

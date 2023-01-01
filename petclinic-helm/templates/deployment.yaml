@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic-deployment
+  labels:
+    app: petclinic
+spec:
+  replicas: {{ .Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: petclinic
+  template:
+    metadata:
+      labels:
+        app: petclinic
+    spec:
+      containers:
+        - name: petclinic-container
+          image: {{ .Values.container.image }}
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          ###### Mount the config map
+          volumeMounts:
+            - name: mnt
+              mountPath: /usr/share
+      volumes:
+        - name: mnt
+          configMap:
+            name: petclinic-configmap
