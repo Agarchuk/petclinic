@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: petclinic-container
-          image: agarchuk/petclinic
+          image: agarchuk/petclinic:%BUILD_ID%
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
