@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic-deployment
+  labels:
+    app: petclinic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petclinic
+  template:
+    metadata:
+      labels:
+        app: petclinic
+    spec:
+      containers:
+        - name: petclinic-container
+          image: agarchuk/petclinic:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          ###### Mount the config map
+          volumeMounts:
+            - name: mnt
+              mountPath: /usr/share
+      volumes:
+        - name: mnt
+          configMap:
+            name: petclinic-configmap
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: petclinic-service
+spec:
+  type: NodePort
+  selector:
+    app: petclinic
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

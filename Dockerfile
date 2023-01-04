@@ -7,8 +7,8 @@ ENV JAVA_OPTS=''
 RUN useradd Hanna
 USER Hanna
 
-COPY target/$JAR /app.jar
+COPY target/$JAR /petclinic.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar","/app.jar"]
+ENTRYPOINT ["java", "-jar","/petclinic.jar"]

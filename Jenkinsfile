@@ -31,6 +31,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                kubernetesDeploy (configs: 'k8s.yaml', kubeconfigId: 'k8sconfig')
             }
         }
     }
