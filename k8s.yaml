@@ -17,7 +17,7 @@ spec:
       containers:
         - name: petclinic-container
           image: agarchuk/petclinic:latest
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           ###### Mount the config map
