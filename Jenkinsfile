@@ -5,7 +5,7 @@ pipeline {
     }
 
     stages {
-        stage('Source') {
+        stage('Checkout') {
             steps {
                sh 'mvn --version'
                sh 'git --version'
