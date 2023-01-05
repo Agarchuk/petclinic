@@ -1,7 +1,7 @@
 pipeline {
     agent any
     parameters{
-        choise(name: 'BUILDER',
+        choice(name: 'BUILDER',
                choices: ['Maven-3.8.7',
                          'Gradle 8.0-rc-1'],
                description: 'Select builder for project. ')
