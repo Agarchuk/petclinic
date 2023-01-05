@@ -16,7 +16,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo "${env.BUILD_ID}"
                 script{
                     sh "docker build -t agarchuk/petclinic:${env.BUILD_ID} ."
                     sh "docker push agarchuk/petclinic:${env.BUILD_ID}"
