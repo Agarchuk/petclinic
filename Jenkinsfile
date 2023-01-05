@@ -28,13 +28,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-               sh 'mvn --version'
                sh 'git --version'
                git branch: 'main',
                    url: 'https://github.com/Agarchuk/petclinic.git'
-               withMaven {
-                   sh 'mvn clean install'
-               }
+               sh 'mvn clean install'
             }
         }
         stage('Build') {
