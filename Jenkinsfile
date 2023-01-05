@@ -1,7 +1,28 @@
 pipeline {
     agent any
+    parameters{
+        choise(name: 'BUILDER',
+               choices: ['Maven-3.8.7',
+                         'Gradle 8.0-rc-1']
+               description: 'Select builder for project. ')
+
+    }
+
     tools {
+        when {
+            expression {
+                params.BUILDER =='Maven-3.8.7'
+            }
+        }
         maven 'Maven-3.8.7'
+    }
+    tools {
+        when {
+            expression {
+                params.BUILDER =='Gradle 8.0-rc-1'
+            }
+        }
+        gradle 'Gradle 8.0-rc-1'
     }
 
     stages {
