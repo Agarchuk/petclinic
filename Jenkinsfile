@@ -31,7 +31,14 @@ pipeline {
                sh 'git --version'
                git branch: 'main',
                    url: 'https://github.com/Agarchuk/petclinic.git'
-               sh 'mvn clean install'
+               if (env.BUILDER == "Maven-3.8.7") {
+                   sh 'mvn clean install'
+               } else {
+                 withGradle {
+                   sh './gradlew build'
+                 }
+               }
+
             }
         }
         stage('Build') {
