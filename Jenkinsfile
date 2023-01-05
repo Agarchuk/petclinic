@@ -8,18 +8,18 @@ pipeline {
 
     }
 
-    tools {
+//    tools {
 //       when {
 //           expression {
-//               params.BUILDER =='Maven-3.8.7'
+//               params.BUILDER == 'Maven-3.8.7'
 //           }
 //       }
-        maven 'Maven-3.8.7'
-    }
+//        maven 'Maven-3.8.7'
+//    }
 //    tools {
 //        when {
 //            expression {
-//                params.BUILDER =='Gradle 8.0-rc-1'
+//                params.BUILDER == 'Gradle 8.0-rc-1'
 //            }
 //        }
 //        gradle 'Gradle 8.0-rc-1'
@@ -32,7 +32,9 @@ pipeline {
                sh 'git --version'
                git branch: 'main',
                    url: 'https://github.com/Agarchuk/petclinic.git'
-               sh 'mvn clean install'
+               withMaven {
+                   sh 'mvn clean install'
+               }
             }
         }
         stage('Build') {
