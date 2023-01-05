@@ -26,19 +26,26 @@ pipeline {
 //    }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout with Maven') {
+            when {
+                expression { env.BUILDER != 'Maven-3.8.7'}
+                }
             steps {
                sh 'git --version'
                git branch: 'main',
                    url: 'https://github.com/Agarchuk/petclinic.git'
-               if (env.BUILDER == "Maven-3.8.7") {
-                   sh 'mvn clean install'
-               } else {
-                 withGradle {
-                   sh './gradlew build'
-                 }
-               }
-
+               sh 'mvn clean install'
+            }
+        }
+        stage('Checkout with Gradle') {
+            when {
+                expression { env.BUILDER != 'Gradle 8.0-rc-1'}
+                }
+            steps {
+               sh 'git --version'
+               git branch: 'main',
+                   url: 'https://github.com/Agarchuk/petclinic.git'
+                sh './gradlew build'
             }
         }
         stage('Build') {
