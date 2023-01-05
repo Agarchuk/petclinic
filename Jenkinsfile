@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'kubepod' }
     tools {
         maven 'Maven-3.8.7'
     }
