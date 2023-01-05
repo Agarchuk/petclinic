@@ -6,6 +6,7 @@ pipeline {
 
     stages {
         stage('Checkout') {
+            echo "Check out..."
             steps {
                sh 'mvn --version'
                sh 'git --version'
