@@ -28,7 +28,7 @@ pipeline {
     stages {
         stage('Checkout with Maven') {
             when {
-                expression { env.BUILDER != 'Maven-3.8.7'}
+                expression { env.BUILDER == 'Maven-3.8.7'}
                 }
             steps {
                sh 'git --version'
@@ -39,7 +39,7 @@ pipeline {
         }
         stage('Checkout with Gradle') {
             when {
-                expression { env.BUILDER != 'Gradle 8.0-rc-1'}
+                expression { env.BUILDER == 'Gradle 8.0-rc-1'}
                 }
             steps {
                sh 'git --version'
