@@ -16,14 +16,14 @@ pipeline {
         }
         maven 'Maven-3.8.7'
     }
-    tools {
-        when {
-            expression {
-                params.BUILDER =='Gradle 8.0-rc-1'
-            }
-        }
-        gradle 'Gradle 8.0-rc-1'
-    }
+//    tools {
+//        when {
+//            expression {
+//                params.BUILDER =='Gradle 8.0-rc-1'
+//            }
+//        }
+//        gradle 'Gradle 8.0-rc-1'
+//    }
 
     stages {
         stage('Checkout') {
