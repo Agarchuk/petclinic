@@ -6,5 +6,4 @@ pipeline {
                 kubernetesDeploy (configs: 'k8s.yaml', kubeconfigId: 'k8sconfig')
             }
         }
-    }
 }
